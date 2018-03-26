@@ -1,0 +1,19 @@
+CROSS_HOST="x86_64-w64-mingw32"
+inherit cross
+
+NAME="mingw64-x86_64-libopenmpt"
+VERSION=0.3.7
+RELEASE=1
+CATEGORY="Devel"
+SUMMARY="Tracked music file decoder library for Win64 toolchain"
+DESCRIPTION="libopenmpt is a cross-platform C++ and C library to decode tracked
+music files (modules) into a raw PCM audio stream."
+HOMEPAGE="https://lib.openmpt.org/libopenmpt/"
+SRC_URI="https://lib.openmpt.org/files/libopenmpt/src/libopenmpt-${VERSION}+release.autotools.tar.gz"
+SRC_DIR="libopenmpt-${VERSION}+release.autotools"
+
+DIFF_EXCLUDES="ax_*.m4"
+
+CPPFLAGS+=" -DMPG123_NO_LARGENAME"
+CYGCONF_ARGS="--disable-openmpt123"
+MAKEOPTS+=" nobase_dist_doc_DATA= "
